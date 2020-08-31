@@ -3,6 +3,7 @@ import './App.css';
 import Form from './Form';
 import Weather from './Weather';
 
+
 function App() {
   const [weather,setWeather] = useState([])
   const APIKEY = 'e65f20788ec89b4daacf899635e95bf7'
@@ -20,7 +21,7 @@ function App() {
         city: apiData.city,
         country: apiData.sys.country,
         description: apiData.weather[0].description,
-        temperature: apiData.main.temp,
+        temperature: Math.round(apiData.main.temp),
         error:""
       }
       )}else{
@@ -47,6 +48,7 @@ function App() {
       error={weather.error}
       />
       {console.log(weather.data)}
+    
     </div>
   );
 }
