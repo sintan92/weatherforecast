@@ -3,6 +3,8 @@ import './App.css';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Form from './components/Form';
 import Weather from './components/Weather';
+import SearchAppBar from './components/SearchAppBar'
+
 
 
 function App() {
@@ -46,7 +48,8 @@ function App() {
     <React.Fragment>
       <CssBaseline />
         <div className="App">
-          <h3>WEATHER APP</h3>
+        <SearchAppBar />
+          <h1>WEATHER APP</h1>
             <Form getWeather={fetchData} />
               <Weather
               city={weather.city}
@@ -58,6 +61,7 @@ function App() {
               maxTemp={weather.maxTemp}
               error={weather.error}
               />
+              
               {console.log(weather.data)}
         
         </div>
