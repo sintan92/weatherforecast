@@ -1,0 +1,94 @@
+import React from 'react';
+
+ 
+const Form = (props) => {
+   
+    return( 
+        <form onSubmit={props.getWeather}>
+            <input 
+            type='text'
+            placeholder='city'
+            name='city'
+            />
+            <input
+            type='text'
+            placeholder='country'
+            name='country'
+            />
+            <button>Submit</button>
+        </form>
+    )
+}
+export default Form;
+
+import React from 'react';
+import { makeStyles } from '@material-ui/core/styles';
+import Button from '@material-ui/core/Button';
+import Input from '@material-ui/core/Input';
+import TextField from '@material-ui/core/TextField';
+
+
+//drop down.
+//button
+
+const useStyles = makeStyles((theme) => ({
+    root: {
+      '& > *': {
+        margin: theme.spacing(1),
+        width: '25ch',
+      },
+    },
+  }));
+ 
+const Form = (props) => {
+    const classes = useStyles();
+    return( 
+        <form className={classes.root} onSubmit={props.getWeather} noValidate autoComplete="off"> 
+        <TextField
+          id="standard-password-input"
+          placeholder="City"
+          label="City"
+          type="text"
+        />
+        <TextField
+          id="standard-password-input"
+          placeholder="Country"
+          label="Country"
+          type="text"
+        />
+           <button>Submit</button>
+        </form>
+        
+    )
+}
+export default Form;
+
+import React from 'react';
+import TextField from '@material-ui/core/TextField';
+import { makeStyles } from '@material-ui/core/styles';
+
+
+const useStyles = makeStyles((theme) => ({
+    root: {
+      '& .MuiTextField-root': {
+        margin: theme.spacing(1),
+        width: '25ch',
+      },
+    },
+  }));
+
+ 
+const Form = (props) => {
+    const classes = useStyles();
+    return( 
+        <form onSubmit={props.getWeather} className={classes.root} noValidate autoComplete="off">
+          <div>
+          <TextField id="standard-search" label="City" type="text" />
+          <TextField id="standard-search" label="Country" type="text" />
+          </div>
+          
+            <button>Submit</button>
+        </form>
+    )
+}
+export default Form;

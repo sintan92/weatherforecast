@@ -1,7 +1,8 @@
 import React,{useState} from 'react';
 import './App.css';
-import Form from './Form';
-import Weather from './Weather';
+import CssBaseline from '@material-ui/core/CssBaseline';
+import Form from './components/Form';
+import Weather from './components/Weather';
 
 
 function App() {
@@ -14,7 +15,6 @@ function App() {
       e.preventDefault()
     const apiData = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city},${country}&APPID=${APIKEY}&units=metric`)
       .then( res => res.json())
-      .then(data => data)
       if(city && country){
       setWeather({
         data: apiData,
@@ -22,6 +22,9 @@ function App() {
         country: apiData.sys.country,
         description: apiData.weather[0].description,
         temperature: Math.round(apiData.main.temp),
+        feelsTemp: Math.round(apiData.main.feels_like),
+        minTemp: Math.round(apiData.main.temp_min),
+        maxTemp: Math.round(apiData.main.temp_max),
         error:""
       }
       )}else{
@@ -31,25 +34,34 @@ function App() {
           country: '',
           description: '',
           temperature: '',
+          feelsTemp: '',
+          minTemp: '',
+          maxTemp:'',
           error:"oj, något gick snett där"
         }
         )}
       }
 
   return (
-    <div className="App">
-      <h3>WEATHER APP</h3>
-      <Form getWeather={fetchData} />
-      <Weather
-      city={weather.city}
-      country={weather.country}
-      description={weather.description}
-      temperature={weather.temperature}
-      error={weather.error}
-      />
-      {console.log(weather.data)}
-    
-    </div>
+    <React.Fragment>
+      <CssBaseline />
+        <div className="App">
+          <h3>WEATHER APP</h3>
+            <Form getWeather={fetchData} />
+              <Weather
+              city={weather.city}
+              country={weather.country}
+              description={weather.description}
+              temperature={weather.temperature}
+              feelsTemp={weather.feelsTemp}
+              minTemp={weather.minTemp}
+              maxTemp={weather.maxTemp}
+              error={weather.error}
+              />
+              {console.log(weather.data)}
+        
+        </div>
+    </React.Fragment>
   );
 }
 
