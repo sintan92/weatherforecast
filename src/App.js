@@ -6,7 +6,6 @@ import Weather from './components/Weather';
 import SearchAppBar from './components/SearchAppBar'
 
 
-
 function App() {
   const [weather,setWeather] = useState([])
   const APIKEY = 'e65f20788ec89b4daacf899635e95bf7'
@@ -49,6 +48,7 @@ function App() {
       <CssBaseline />
         <div className="App">
         <SearchAppBar />
+        
           <h1>WEATHER APP</h1>
             <Form getWeather={fetchData} />
               <Weather
@@ -61,7 +61,6 @@ function App() {
               maxTemp={weather.maxTemp}
               error={weather.error}
               />
-              
               {console.log(weather.data)}
         
         </div>

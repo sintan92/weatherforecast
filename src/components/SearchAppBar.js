@@ -15,6 +15,12 @@ const useStyles = makeStyles((theme) => ({
   menuButton: {
     marginRight: theme.spacing(2),
   },
+  MapIcon: {
+    marginRight: theme.spacing(2),
+  },
+  HomeIcon: {
+    marginRight: theme.spacing(2),
+  },
   title: {
     flexGrow: 1,
     display: 'none',
@@ -76,7 +82,7 @@ function SearchAppBar() {
             color="inherit"
             aria-label="open drawer"
           >
-            <MenuIcon />
+          <MenuIcon />
           </IconButton>
           <Typography className={classes.title} variant="h6" noWrap>
           </Typography>
